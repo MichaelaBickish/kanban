@@ -46,7 +46,7 @@ export class BoardsController extends BaseController {
 
   async findOne(req, res, next) {
     try {
-      const data = await boardsService.find({ _id: req.params.id, creatorId: req.userInfo.id })
+      const data = await boardsService.findOne({ _id: req.params.id, creatorId: req.userInfo.id })
       // { _id: req.params.id }, { creatorId: req.userInfo.id }
       return res.send(data)
     } catch (error) {
@@ -56,7 +56,7 @@ export class BoardsController extends BaseController {
 
   async getAll(req, res, next) {
     try {
-      const data = await boardsService.find(req.query)
+      const data = await boardsService.find({ creatorId: req.userInfo.id })
       return res.send(data)
     } catch (error) {
       next(error)

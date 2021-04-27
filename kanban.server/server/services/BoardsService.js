@@ -23,13 +23,13 @@ class BoardsService {
     return await dbContext.Boards.create(body)
   }
 
-  // async findOne(query) {
-  //   const board = await dbContext.Boards.findOne(query)
-  //   // { _id: id._id, creatorId: creatorId.creatorId }
-  //   if (!board) {
-  //     throw new BadRequest('Invalid ID')
-  //   }
-  // }
+  async findOne(query) {
+    const board = await dbContext.Boards.findOne(query)
+    // { _id: id._id, creatorId: creatorId.creatorId }
+    if (!board) {
+      throw new BadRequest('Invalid ID')
+    }
+  }
 
   async find(query = {}) {
     const data = await dbContext.Boards.find(query)
