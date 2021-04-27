@@ -7,11 +7,17 @@ class BoardsService {
     try {
       const res = await api.get('api/boards/')
       AppState.boards = res.data
-      console.log(res.data)
+      // console.log(res.data)
     } catch (err) {
       logger.error('HAVE YOU STARTED YOUR SERVER YET???', err)
     }
   }
+
+  async getOneBoard(id) {
+    const res = await api.get('api/boards/' + id)
+    AppState.activeBoard = res.data
+  }
+  // Need a function here for getListById
 
   async createBoard(body) {
     const res = await api.post('api/boards', body)

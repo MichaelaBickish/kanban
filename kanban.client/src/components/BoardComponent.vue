@@ -1,15 +1,17 @@
 <template>
   <div class="col-md-3 boardComponent my-3">
-    <div class="board-card shadow bg-light">
-      <div class="card-body">
-        <div class="text-right text-danger">
-          <i class="fas fa-times" @click="deleteBoard(board)"></i>
+    <router-link :to="{ name: 'BoardDetailsPage', params:{id:board.id} }">
+      <div class="board-card shadow bg-light">
+        <div class="card-body">
+          <div class="text-right text-danger">
+            <i class="fas fa-times" @click="deleteBoard(board)"></i>
+          </div>
+          <h5 class="card-title text-center">
+            {{ board.title }}
+          </h5>
         </div>
-        <h5 class="card-title text-center">
-          {{ board.title }}
-        </h5>
       </div>
-    </div>
+    </router-link>
   </div>
 </template>
 

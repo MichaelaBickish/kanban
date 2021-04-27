@@ -29,6 +29,7 @@ class BoardsService {
     if (!board) {
       throw new BadRequest('Invalid ID')
     }
+    return board
   }
 
   async find(query = {}) {
