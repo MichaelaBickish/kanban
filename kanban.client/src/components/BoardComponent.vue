@@ -1,7 +1,10 @@
 <template>
-  <div class="col-md-3 boardComponent m-3">
+  <div class="col-md-3 boardComponent my-3">
     <div class="board-card shadow bg-light">
       <div class="card-body">
+        <div class="text-right text-danger">
+          <i class="fas fa-times" @click="deleteBoard(board)"></i>
+        </div>
         <h5 class="card-title text-center">
           {{ board.title }}
         </h5>
@@ -11,6 +14,8 @@
 </template>
 
 <script>
+import { boardsService } from '../services/BoardsService'
+import Notification from '../utils/Notification'
 export default {
   name: 'BoardComponent',
   props: {
@@ -19,8 +24,18 @@ export default {
       required: true
     }
   },
-  setup() {
-    return {}
+  setup(props) {
+    return {
+      async deleteBoard() {
+        try {
+          if (await Notification.confirmAction()) {
+            await boardsService.deleteBoard(props.board.id)
+          }
+        } catch (error) {
+          Notification.toast('Error: ' + error, 'error')
+        }
+      }
+    }
   },
   components: {}
 }

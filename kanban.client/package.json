@@ -9,8 +9,10 @@
   },
   "dependencies": {
     "@bcwdev/auth0provider-client": "0.0.3",
+    "@fortawesome/fontawesome-free": "^5.15.3",
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
+    "fontawesome": "^5.6.3",
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1",
     "socket.io-client": "^2.2.0",
@@ -31,7 +33,7 @@
     "eslint-plugin-standard": "^5.0.0",
     "eslint-plugin-vue": "^7.4.1",
     "node-sass": "^5.0.0",
-    "sass-loader": "^10.1.1",
-    "sass": "^1.32.4"
+    "sass": "^1.32.11",
+    "sass-loader": "^10.1.1"
   }
 }

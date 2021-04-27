@@ -17,6 +17,11 @@ class BoardsService {
     const res = await api.post('api/boards', body)
     AppState.boards = [...AppState.boards, res.data]
   }
+
+  async deleteBoard(id) {
+    await api.delete('api/boards/' + id)
+    AppState.boards = AppState.boards.filter(board => board.id !== id)
+  }
 }
 
 export const boardsService = new BoardsService()

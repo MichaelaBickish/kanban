@@ -22,7 +22,7 @@
       </div>
     <!-- {{ state.boards }} -->
     </div>
-    <div class="row">
+    <div class="row justify-content-around">
       <BoardComponent v-for="board in state.boards" :key="board.id" :board="board" />
     </div>
   </div>
