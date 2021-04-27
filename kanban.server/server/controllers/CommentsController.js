@@ -1,9 +1,9 @@
 import { Auth0Provider } from '@bcwdev/auth0provider'
-import { listsService } from '../services/ListsService'
+import { commentsService } from '../services/CommentsService'
 import BaseController from '../utils/BaseController'
-export class ListsController extends BaseController {
+export class CommentsController extends BaseController {
   constructor() {
-    super('api/lists')
+    super('api/comments')
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getAll)
@@ -15,7 +15,7 @@ export class ListsController extends BaseController {
 
   async delete(req, res, next) {
     try {
-      const data = await listsService.delete(req.params.id)
+      const data = await commentsService.delete(req.params.id)
       res.send(data)
     } catch (error) {
       next(error)
@@ -26,7 +26,7 @@ export class ListsController extends BaseController {
     try {
       req.body.creatorId = req.userInfo.id
       req.body.id = req.params.id
-      const data = await listsService.edit(req.body)
+      const data = await commentsService.edit(req.body)
       return res.send(data)
     } catch (error) {
       next(error)
@@ -36,7 +36,7 @@ export class ListsController extends BaseController {
   async create(req, res, next) {
     try {
       req.body.creatorId = req.userInfo.id
-      const data = await listsService.create(req.body)
+      const data = await commentsService.create(req.body)
       res.send(data)
     } catch (error) {
       next(error)
@@ -45,7 +45,7 @@ export class ListsController extends BaseController {
 
   async findOne(req, res, next) {
     try {
-      const data = await listsService.find({ _id: req.params.id, creatorId: req.userInfo.id })
+      const data = await commentsService.find({ _id: req.params.id, creatorId: req.userInfo.id })
       // { _id: req.params.id }, { creatorId: req.userInfo.id }
       return res.send(data)
     } catch (error) {
@@ -55,7 +55,7 @@ export class ListsController extends BaseController {
 
   async getAll(req, res, next) {
     try {
-      const data = await listsService.find(req.query)
+      const data = await commentsService.find(req.query)
       return res.send(data)
     } catch (error) {
       next(error)

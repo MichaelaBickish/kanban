@@ -1,9 +1,9 @@
 import { dbContext } from '../db/DbContext'
 import { BadRequest } from '../utils/Errors'
 
-class ListsService {
+class CommentsService {
   async delete(id) {
-    const data = await dbContext.Lists.findOneAndDelete(id)
+    const data = await dbContext.Comments.findOneAndDelete(id)
     if (!data) {
       throw new BadRequest('Invalid Id')
     }
@@ -11,7 +11,7 @@ class ListsService {
   }
 
   async edit(body) {
-    const data = await dbContext.Lists.findOneAndUpdate({ _id: body.id, creatorId: body.creatorId }, body, { new: true })
+    const data = await dbContext.Comments.findOneAndUpdate({ _id: body.id, creatorId: body.creatorId }, body, { new: true })
     if (!data) {
       throw new BadRequest('Invalid Id')
     }
@@ -19,13 +19,13 @@ class ListsService {
   }
 
   async create(body) {
-    return await dbContext.Lists.create(body)
+    return await dbContext.Comments.create(body)
   }
 
   async find(query = {}) {
-    const data = await dbContext.Lists.find(query)
+    const data = await dbContext.Comments.find(query)
     return data
   }
 }
 
-export const listsService = new ListsService()
+export const commentsService = new CommentsService()

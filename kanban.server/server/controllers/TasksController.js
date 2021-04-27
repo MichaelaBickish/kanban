@@ -1,9 +1,9 @@
 import { Auth0Provider } from '@bcwdev/auth0provider'
-import { listsService } from '../services/ListsService'
+import { tasksService } from '../services/TasksService'
 import BaseController from '../utils/BaseController'
-export class ListsController extends BaseController {
+export class TasksController extends BaseController {
   constructor() {
-    super('api/lists')
+    super('api/tasks')
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getAll)
@@ -15,7 +15,7 @@ export class ListsController extends BaseController {
 
   async delete(req, res, next) {
     try {
-      const data = await listsService.delete(req.params.id)
+      const data = await tasksService.delete(req.params.id)
       res.send(data)
     } catch (error) {
       next(error)
@@ -26,7 +26,7 @@ export class ListsController extends BaseController {
     try {
       req.body.creatorId = req.userInfo.id
       req.body.id = req.params.id
-      const data = await listsService.edit(req.body)
+      const data = await tasksService.edit(req.body)
       return res.send(data)
     } catch (error) {
       next(error)
@@ -36,7 +36,7 @@ export class ListsController extends BaseController {
   async create(req, res, next) {
     try {
       req.body.creatorId = req.userInfo.id
-      const data = await listsService.create(req.body)
+      const data = await tasksService.create(req.body)
       res.send(data)
     } catch (error) {
       next(error)
@@ -45,7 +45,7 @@ export class ListsController extends BaseController {
 
   async findOne(req, res, next) {
     try {
-      const data = await listsService.find({ _id: req.params.id, creatorId: req.userInfo.id })
+      const data = await tasksService.find({ _id: req.params.id, creatorId: req.userInfo.id })
       // { _id: req.params.id }, { creatorId: req.userInfo.id }
       return res.send(data)
     } catch (error) {
@@ -55,7 +55,7 @@ export class ListsController extends BaseController {
 
   async getAll(req, res, next) {
     try {
-      const data = await listsService.find(req.query)
+      const data = await tasksService.find(req.query)
       return res.send(data)
     } catch (error) {
       next(error)
