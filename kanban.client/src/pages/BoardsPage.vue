@@ -1,21 +1,30 @@
 <template>
-  <div class="boards-page" v-if="state.boards">
-    <span class="ml-4"><label for="title" class="">Create a New Board! </label></span>
-    <form class="form-inline" @submit.prevent="createBoard">
-      <div class="form-group mx-sm-3 mb-2">
-        <input type="text"
-               class="form-control"
-               id="board-title"
-               placeholder="Board Title..."
-               v-model="state.newBoard.title"
-               required
-        >
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 mt-3">
+        <div class="boards-page" v-if="state.boards">
+          <span class="ml-4"><label for="title" class="">Create a New Board! </label></span>
+          <form class="form-inline" @submit.prevent="createBoard">
+            <div class="form-group mx-sm-3 mb-2">
+              <input type="text"
+                     class="form-control"
+                     id="board-title"
+                     placeholder="Board Title..."
+                     v-model="state.newBoard.title"
+                     required
+              >
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">
+              +
+            </button>
+          </form>
+        </div>
       </div>
-      <button type="submit" class="btn btn-primary mb-2">
-        +
-      </button>
-    </form>
     <!-- {{ state.boards }} -->
+    </div>
+    <div class="row">
+      <BoardComponent v-for="board in state.boards" :key="board.id" :board="board" />
+    </div>
   </div>
 </template>
 
