@@ -24,6 +24,7 @@ export class BoardsController extends BaseController {
 
   async edit(req, res, next) {
     try {
+      // Using creatorId here is called in service. makes sure the creator is the person that's logged in.
       req.body.creatorId = req.userInfo.id
       req.body.id = req.params.id
       const data = await boardsService.edit(req.body)

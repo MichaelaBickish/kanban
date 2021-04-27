@@ -11,6 +11,7 @@ class BoardsService {
   }
 
   async edit(body) {
+    // bring in the creatorId: body.creatorId checks to make sure the person editing is also the person who created it.
     const data = await dbContext.Boards.findOneAndUpdate({ _id: body.id, creatorId: body.creatorId }, body, { new: true })
     if (!data) {
       throw new BadRequest('Invalid Id')
