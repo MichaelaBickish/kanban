@@ -1,9 +1,10 @@
 <template>
   <div class="home flex-grow-1 d-flex flex-column align-items-center justify-content-center">
-    <img src="https://bcw.blob.core.windows.net/public/img/8600856373152463" alt="CodeWorks Logo">
+    <i class="fas fa-hand-sparkles fa-6x"></i>
     <h1 class="my-5 bg-dark text-light p-3 rounded d-flex align-items-center">
-      <span class="mx-2 text-white">Vue 3 Starter</span>
+      <span class="mx-2 text-white">You must be logged in to access boards</span>
     </h1>
+    <!-- insert vid tag here -->
   </div>
 </template>
 

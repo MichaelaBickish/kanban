@@ -1,12 +1,13 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-info">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
-        <img
+        <!-- <img
           alt="logo"
           src="../assets/img/cw-logo.png"
           height="45"
-        />
+        /> -->
+        <i class="fas fa-cocktail fa-3x"></i>
       </div>
     </router-link>
     <button
@@ -56,7 +57,7 @@
               :src="user.picture"
               alt="user photo"
               height="40"
-              class="rounded"
+              class="rounded-circle"
             />
             <span class="mx-3">{{ user.name }}</span>
           </div>
