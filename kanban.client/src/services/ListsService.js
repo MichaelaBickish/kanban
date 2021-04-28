@@ -14,7 +14,7 @@ class ListsService {
 
   async getTaskByListId(id) {
     const res = await api.get(`api/lists/${id}/tasks`)
-    AppState.tasks = res.data
+    AppState.tasks[id] = res.data
   }
 }
 

@@ -14,7 +14,10 @@
           </label>
         </div>
       </div>
-
+      <!-- Injecting Task component here -->
+      <div>
+        <TaskComponent v-for="task in state.tasks" :key="task.id" :task="task" />
+      </div>
       <!-- inputform below -->
       <div class="col-md-12 align-self-end mb-2">
         <!-- v-if="state.tasks" -->
@@ -43,8 +46,9 @@
 <script>
 import { listsService } from '../services/ListsService'
 import { tasksService } from '../services/TasksService'
-import { onMounted, reactive } from 'vue'
+import { computed, onMounted, reactive } from 'vue'
 import Notification from '../utils/Notification'
+import { AppState } from '../AppState'
 export default {
   name: 'ListComponent',
   props: {
@@ -55,7 +59,8 @@ export default {
   },
   setup(props) {
     const state = reactive({
-      newTask: {}
+      newTask: {},
+      tasks: computed(() => AppState.tasks[props.list.id])
     })
     onMounted(async() => {
       try {
