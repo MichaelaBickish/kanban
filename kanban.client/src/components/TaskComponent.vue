@@ -1,5 +1,5 @@
 <template>
-  <div class="task-component shadow rounded ml-3">
+  <div class="task-component shadow rounded m-3 ">
     <!-- this is injected into the list component -->
     {{ task.title }}
   </div>
