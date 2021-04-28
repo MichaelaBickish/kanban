@@ -24,7 +24,30 @@ class TasksService {
 
   async find(query = {}) {
     const data = await dbContext.Tasks.find(query)
+      .populate('creator', 'name picture')
+      // .populate({ path: 'comments', populate: { path: 'creator', model: 'Account' } })
+    if (!data) {
+      throw new BadRequest('Invalid Id')
+    }
     return data
+  }
+
+  async createComment(taskId, body) {
+    const task = await this.find(taskId)
+    task.comments.push(body)
+    await task.save()
+    return task
+  }
+
+  async deleteComment(id, commentId, creatorId) {
+    const task = await this.find(id)
+    const comment = task.comments.id(commentId)
+    // this if statement allows the creator of the task to delete any comments on the task
+    if (task.creatorId === creatorId || comment.creatorId === creatorId) {
+      comment.remove()
+      await task.save()
+      return task
+    }
   }
 }
 

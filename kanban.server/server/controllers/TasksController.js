@@ -9,8 +9,29 @@ export class TasksController extends BaseController {
       .get('', this.getAll)
       .get('/:id', this.findOne)
       .post('', this.create)
+      .post('/:id/comments', this.addComment)
       .put('/:id', this.edit)
       .delete('/:id', this.delete)
+      .delete('/:id/comments/:commentId', this.deleteComment)
+  }
+
+  async deleteComment(req, res, next) {
+    try {
+      const task = await tasksService.deleteComment(req.params.id, req.params.commentId, req.userInfo.id)
+      return res.send({ message: 'comment removed', data: task })
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async addComment(req, res, next) {
+    try {
+      req.body.creatorId = req.userInfo.Id
+      const task = await tasksService.createComment(req.params.id, req.body)
+      return res.send(task)
+    } catch (error) {
+      next(error)
+    }
   }
 
   async delete(req, res, next) {
