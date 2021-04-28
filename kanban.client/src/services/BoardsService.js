@@ -17,7 +17,15 @@ class BoardsService {
     const res = await api.get('api/boards/' + id)
     AppState.activeBoard = res.data
   }
-  // Need a function here for getListById
+
+  // We are taking in the boardId here getListByBoardId(id) because in controller we are passing route.params.id
+  async getListByBoardId(id) {
+    // we are waiting for the api to return the list thats attatched to the boardId we selected
+    const res = await api.get(`api/boards/${id}/lists`)
+    // logger.log(res.data)
+    // this line is saving the data we get back from the api into the appstate.list
+    AppState.lists = res.data
+  }
 
   async createBoard(body) {
     const res = await api.post('api/boards', body)
