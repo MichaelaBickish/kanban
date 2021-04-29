@@ -26,7 +26,7 @@ export class TasksController extends BaseController {
 
   async addComment(req, res, next) {
     try {
-      req.body.creatorId = req.userInfo.Id
+      req.body.creatorId = req.userInfo.id
       const task = await tasksService.createComment(req.params.id, req.body)
       return res.send(task)
     } catch (error) {

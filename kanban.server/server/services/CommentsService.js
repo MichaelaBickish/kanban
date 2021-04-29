@@ -19,7 +19,7 @@ class CommentsService {
   }
 
   async create(body) {
-    return await dbContext.Comments.create(body)
+    return await dbContext.Tasks.findOneAndUpdate(body)
   }
 
   async find(query = {}) {

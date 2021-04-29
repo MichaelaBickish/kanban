@@ -33,7 +33,7 @@ class TasksService {
   }
 
   async createComment(taskId, body) {
-    const task = await this.find(taskId)
+    const task = await dbContext.Tasks.findOne({ _id: taskId, creatorId: body.creatorId })
     task.comments.push(body)
     await task.save()
     return task
