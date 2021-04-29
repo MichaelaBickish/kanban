@@ -17,7 +17,7 @@
                      required
               >
             </div>
-            <button type="submit" class="btn btn-outline-primary mb-2">
+            <button type="submit" title="Add a List" class="btn btn-outline-primary action mb-2">
               +
             </button>
           </form>
@@ -74,5 +74,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.action{
+  cursor: pointer;
+  z-index: 10;
+}
 </style>

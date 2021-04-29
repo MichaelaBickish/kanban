@@ -14,7 +14,7 @@
                      required
               >
             </div>
-            <button type="submit" class="btn btn-primary mb-2">
+            <button type="submit" title="Add New Board" class="btn btn-secondary mb-2 action">
               +
             </button>
           </form>
@@ -66,5 +66,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.action{
+  cursor: pointer;
+  z-index: 10;
+}
 </style>

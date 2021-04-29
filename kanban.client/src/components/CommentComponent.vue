@@ -1,9 +1,7 @@
 <template>
   <div class="comment-component">
     <div class="float-right text-danger">
-      <label for="delete this list" class="list-delete mt-3 mr-2">
-        <i class="fas fa-times" @click="deleteComment(comment)"></i>
-      </label>
+      <i class="fas fa-times action" title="delete comment" @click.stop="deleteComment(comment)"></i>
     </div>
     <li>
       {{ comment.body }}
@@ -48,5 +46,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.action{
+  cursor: pointer;
+  z-index: 10;
+}
 </style>

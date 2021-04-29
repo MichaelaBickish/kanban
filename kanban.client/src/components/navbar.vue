@@ -7,11 +7,12 @@
           src="../assets/img/cw-logo.png"
           height="45"
         /> -->
-        <i class="fas fa-cocktail fa-3x"></i>
+        <i class="fas fa-cocktail fa-3x" title="Go to Home"></i>
       </div>
     </router-link>
     <button
       class="navbar-toggler"
+      title="Menu"
       type="button"
       data-toggle="collapse"
       data-target="#navbarText"
@@ -23,17 +24,12 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
+        <li class="nav-item" title="Go to Home">
           <router-link :to="{ name: 'Home' }" class="nav-link">
             Home
           </router-link>
         </li>
-        <li class="nav-item">
-          <router-link :to="{ name: 'About' }" class="nav-link">
-            About
-          </router-link>
-        </li>
-        <li class="nav-item">
+        <li class="nav-item" title="View Boards">
           <router-link :to="{ name: 'BoardsPage' }" class="nav-link">
             Boards
           </router-link>
@@ -50,7 +46,8 @@
 
         <div class="dropdown" v-else>
           <div
-            class="dropdown-toggle"
+            class="dropdown-toggle hoverable"
+            title="User Info"
             @click="state.dropOpen = !state.dropOpen"
           >
             <img

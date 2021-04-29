@@ -1,28 +1,37 @@
 <template>
-  <div class="task-component shadow rounded m-3 ">
+  <div class="task-component shadow rounded mx-3 ">
     <!-- this is injected into the list component -->
 
-    <div class="card">
+    <div class="card my-1">
       <div class="card-body">
         <div class="text-right">
-          <i class="fas fa-times text-danger" @click="deleteTask(task)"></i>
+          <i class="fas fa-times text-danger action" title="delete task" @click="deleteTask(task)"></i>
         </div>
         <p>
           {{ task.title }}
         </p>
         <!-- This starts the move task dropdown -->
         <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle"
+          <button class="btn btn-secondary dropdown-toggle my-2"
                   type="button"
+                  title="Move task to a different board!"
                   id="dropdownMenu2"
                   data-toggle="dropdown"
                   aria-haspopup="true"
                   aria-expanded="false"
           >
-            Move Task
+            <span class="text-dark">
+              Move Task
+            </span>
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-            <a class="dropdown-item" type="button" v-for="list in state.list" :key="list.id" @click="moveTask(task, list.id)">
+            <a class="dropdown-item action"
+               type="button"
+               title="Move to this board!"
+               v-for="list in state.list"
+               :key="list.id"
+               @click="moveTask(task, list.id)"
+            >
               <p>
                 {{ list.title }}
               </p>
@@ -32,14 +41,17 @@
         <!-- this ends the move task dropdown -->
         <!-- btn -->
         <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle"
+          <button class="btn btn-secondary dropdown-toggle my-2"
                   type="button"
+                  title="View/Add comment"
                   id="dropdownMenu2"
                   data-toggle="dropdown"
                   aria-haspopup="true"
                   aria-expanded="false"
           >
-            Comment
+            <span class="text-dark">
+              Comment
+            </span>
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
             <!-- start the add comment input -->
@@ -53,7 +65,7 @@
                        required
                 >
                 <div class="input-group-append">
-                  <button class="btn btn-outline-secondary" type="submit">
+                  <button class="btn btn-outline-secondary action" title="Add Comment" type="submit">
                     +
                   </button>
                 </div>
@@ -130,5 +142,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.action{
+  cursor: pointer;
+  z-index: 10;
+}
 </style>

@@ -1,17 +1,17 @@
 <template>
   <div class="col-md-3 boardComponent my-3">
-    <router-link :to="{ name: 'BoardDetailsPage', params:{id:board.id} }">
-      <div class="board-card shadow bg-light">
-        <div class="card-body">
-          <div class="text-right text-danger">
-            <i class="fas fa-times" @click="deleteBoard(board)"></i>
-          </div>
-          <h5 class="card-title text-center">
+    <div class="board-card shadow bg-light">
+      <div class="card-body">
+        <div class="text-right text-danger" title="Delete This Board">
+          <i class="fas fa-times action" @click="deleteBoard(board)"></i>
+        </div>
+        <router-link :to="{ name: 'BoardDetailsPage', params:{id:board.id} }">
+          <h5 class="card-title text-center action" title="Access This Board">
             {{ board.title }}
           </h5>
-        </div>
+        </router-link>
       </div>
-    </router-link>
+    </div>
   </div>
 </template>
 
@@ -48,5 +48,9 @@ export default {
   min-height: 8rem;
   min-width: 8rem;
   border-radius: 50px 15px;
+}
+.action{
+  cursor: pointer;
+  z-index: 10;
 }
 </style>

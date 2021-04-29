@@ -8,14 +8,12 @@
             {{ list.title }}
           </b>
         </div>
-        <div class="float-right text-danger">
-          <label for="delete this list" class="list-delete mt-3 mr-2">
-            <i class="fas fa-times" @click="deleteList(list)"></i>
-          </label>
+        <div class="float-right text-danger m-3">
+          <i class="fas fa-times action" title="Delete List" @click="deleteList(list)"></i>
         </div>
       </div>
       <!-- Injecting Task component here -->
-      <div>
+      <div class="col-md-12">
         <TaskComponent v-for="task in state.tasks" :key="task.id" :task="task" />
       </div>
       <!-- inputform below -->
@@ -31,7 +29,7 @@
                    v-model="state.newTask.title"
                    required
             >
-            <button type="submit" class="btn btn-outline-primary mb-2 ml-1 mt-2">
+            <button type="submit" title="Create New Task" class="btn btn-outline-secondary mb-2 ml-1 mt-2 action">
               +
             </button>
           </div>
@@ -108,5 +106,9 @@ margin-top: 1rem;
 }
 input{
   max-width: 50%
+}
+.action{
+  cursor: pointer;
+  z-index: 10;
 }
 </style>
