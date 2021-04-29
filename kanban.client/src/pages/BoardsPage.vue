@@ -15,7 +15,7 @@
               >
             </div>
             <button type="submit" title="Add New Board" class="btn btn-secondary mb-2 action">
-              +
+              <i class="fa fa-plus font-weight-bold" aria-hidden="true"></i>
             </button>
           </form>
         </div>

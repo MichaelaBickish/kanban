@@ -17,8 +17,8 @@
                      required
               >
             </div>
-            <button type="submit" title="Add a List" class="btn btn-outline-primary action mb-2">
-              +
+            <button type="submit" title="Add a List" class="btn btn-outline-secondary action mb-2">
+              <i class="fa fa-plus font-weight-bold" aria-hidden="true"></i>
             </button>
           </form>
         </div>

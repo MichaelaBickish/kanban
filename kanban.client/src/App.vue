@@ -6,8 +6,8 @@
     <router-view />
   </main>
   <footer>
-    <div class="bg-info text-light text-center p-4">
-      Made with 💖 by M&M
+    <div class="bg-info text-dark text-center p-4">
+      Made by M&M
     </div>
   </footer>
 </template>

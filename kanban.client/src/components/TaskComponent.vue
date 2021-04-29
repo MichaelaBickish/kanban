@@ -66,7 +66,7 @@
                 >
                 <div class="input-group-append">
                   <button class="btn btn-outline-secondary action" title="Add Comment" type="submit">
-                    +
+                    <i class="fa fa-plus font-weight-bold" aria-hidden="true"></i>
                   </button>
                 </div>
               </div>

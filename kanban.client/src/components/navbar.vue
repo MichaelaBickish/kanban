@@ -11,7 +11,7 @@
       </div>
     </router-link>
     <button
-      class="navbar-toggler"
+      class="navbar-toggler hamburger"
       title="Menu"
       type="button"
       data-toggle="collapse"
@@ -20,7 +20,7 @@
       aria-expanded="false"
       aria-label="Toggle navigation"
     >
-      <span class="navbar-toggler-icon" />
+      <span class="navbar-toggler-icon hamburger" />
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
@@ -123,8 +123,15 @@ a:hover {
 }
 .nav-link{
   text-transform: uppercase;
+  color:black !important;
 }
 .nav-item .nav-link.router-link-exact-active{
   color: var(--primary);
+}
+.dropdown-toggle{
+  color:black !important;
+}
+.hamburger{
+  color:black !important;
 }
 </style>

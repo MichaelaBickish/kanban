@@ -30,7 +30,7 @@
                    required
             >
             <button type="submit" title="Create New Task" class="btn btn-outline-secondary mb-2 ml-1 mt-2 action">
-              +
+              <i class="fa fa-plus font-weight-bold" aria-hidden="true"></i>
             </button>
           </div>
         </form>
