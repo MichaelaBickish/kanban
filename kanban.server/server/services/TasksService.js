@@ -32,6 +32,7 @@ class TasksService {
     return data
   }
 
+  // this is our post for comments
   async createComment(taskId, body) {
     const task = await dbContext.Tasks.findOne({ _id: taskId, creatorId: body.creatorId })
     task.comments.push(body)
@@ -39,8 +40,8 @@ class TasksService {
     return task
   }
 
-  async deleteComment(id, commentId, creatorId) {
-    const task = await this.find(id)
+  async deleteComment(taskId, commentId, creatorId) {
+    const task = await dbContext.Tasks.findById({ _id: taskId, creatorId: creatorId })
     const comment = task.comments.id(commentId)
     // this if statement allows the creator of the task to delete any comments on the task
     if (task.creatorId === creatorId || comment.creatorId === creatorId) {

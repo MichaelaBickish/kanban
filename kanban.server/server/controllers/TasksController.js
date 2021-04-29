@@ -35,6 +35,7 @@ export class TasksController extends BaseController {
   }
 
   async delete(req, res, next) {
+    // delete only takes in an id NOT a body post & put passes a body
     try {
       const data = await tasksService.delete(req.params.id)
       res.send(data)
