@@ -17,7 +17,7 @@
                      required
               >
             </div>
-            <button type="submit" class="btn btn-primary mb-2">
+            <button type="submit" class="btn btn-outline-primary mb-2">
               +
             </button>
           </form>

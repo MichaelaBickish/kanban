@@ -4,6 +4,9 @@
 
     <div class="card">
       <div class="card-body">
+        <div class="text-right">
+          <i class="fas fa-times text-danger" @click="deleteTask(task)"></i>
+        </div>
         {{ task.title }}
 
         <!-- btn -->
@@ -47,6 +50,8 @@
 </template>
 
 <script>
+import { tasksService } from '../services/TasksService'
+import Notification from '../utils/Notification'
 export default {
   name: 'TaskComponent',
   props: {
@@ -55,8 +60,18 @@ export default {
       required: true
     }
   },
-  setup() {
-    return {}
+  setup(props) {
+    return {
+      async deleteTask() {
+        try {
+          if (await Notification.confirmAction()) {
+            await tasksService.deleteTask(props.task)
+          }
+        } catch (error) {
+          Notification.toast('Error: ' + error, 'error')
+        }
+      }
+    }
   },
   components: {}
 }
