@@ -2,8 +2,8 @@ import { dbContext } from '../db/DbContext'
 import { BadRequest } from '../utils/Errors'
 
 class TasksService {
-  async delete(id) {
-    const data = await dbContext.Tasks.findOneAndDelete(id)
+  async delete(id, userId) {
+    const data = await dbContext.Tasks.findOneAndDelete({ _id: id, creatorId: userId })
     if (!data) {
       throw new BadRequest('Invalid Id')
     }
